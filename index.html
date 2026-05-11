@@ -115,15 +115,19 @@
         <form id="contactoForm" onsubmit="return validarFormulario()">
           <label for="nombre">Nombre completo:</label>
           <input type="text" id="nombre" placeholder="Escribe tu nombre">
+          <span id="error-nombre" class="mensaje-error"></span>
       
           <label for="email">Correo electrónico:</label>
           <input type="email" id="email" placeholder="ejemplo@gmail.com">
+          <span id="error-email" class="mensaje-error"></span>
       
           <label for="telefono">Teléfono:</label>
           <input type="text" id="telefono" placeholder="10 dígitos">
+          <span id="error-telefono" class="mensaje-error"></span>
       
           <label for="mensajeContacto">Mensaje:</label>
           <textarea id="mensajeContacto" placeholder="Escribe tu mensaje"></textarea>
+          <span id="error-mensajeContacto" class="mensaje-error"></span>
       
           <button type="submit">Enviar</button>
         </form>
@@ -134,6 +138,11 @@
         .error {
           border: 2px solid red;
           background-color: #ffe6e6;
+        }
+        .mensaje-error {
+          color: red;
+          font-size: 14px;
+          font-weight: bold;
         }
       </style>
       
@@ -146,18 +155,23 @@
       
           campos.forEach(id => {
             const campo = document.getElementById(id);
+            const errorSpan = document.getElementById("error-" + id);
+      
             if (campo.value.trim() === "") {
               campo.classList.add("error"); // marca en rojo
+              errorSpan.innerText = "error, falta rellenar esta casilla";
               valido = false;
             } else {
               campo.classList.remove("error"); // limpia si está correcto
+              errorSpan.innerText = ""; // borra mensaje de error
             }
           });
       
-          // Si hay algún campo vacío, no se envía
-          return valido;
+          return valido; // si hay algún campo vacío, no se envía
         }
       </script>
+      
+
 
     <footer>
         <p>2026 - David</p>
