@@ -1,15 +1,56 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Mi página web</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        .btn-flotante {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+        .btn-flotante:hover { transform: scale(1.1); }
+        .facebook { background-color: #1877f2; }
+        .whatsapp { background-color: #25d366; right: 90px; }
+        .dark-mode { background-color: #121212; color: #ffffff; }
+        .dark-mode header, .dark-mode nav, .dark-mode section, .dark-mode footer {
+            background-color: #1e1e1e; color: #ffffff;
+        }
+        .bloque-mensaje {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .mensaje-oculto {
+            display: none;
+            margin-top: 5px;
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <header>
+    <header id="top">
         <h1>Mi página web</h1>
+        <button id="btnDarkMode" onclick="toggleDarkMode()">Modo oscuro</button>
     </header>
 
     <nav>
@@ -19,23 +60,146 @@
 
     <section id="sobre-mi">
         <h2>Sobre mí</h2>
-        <p>mi nombre David garcia padilla </p>
-        <h3>estudio ondontologia </h3>
-            <h3>me interesa conocer mas sobre el pec</h3>
-            <h3>odontologo profesional</h3>
-        </p>
+        <p>Mi nombre es David García Padilla</p>
+        <h3>Estudio odontología</h3>
+        <h3>Me interesa conocer más sobre el PEC</h3>
+        <h3>Odontólogo profesional</h3>
+
+      <!-- Contenedor general en fila -->
+<div class="contenedor-botones">
+  
+    <!-- Primer bloque -->
+    <div class="bloque-mensaje">
+      <button id="btnMensaje" 
+              onclick="toggleMensaje('mensaje','btnMensaje','cuida y protege a los animales.','Mostrar mensaje','Ocultar mensaje')">
+        Mostrar mensaje
+      </button>
+      <p id="mensaje" class="mensaje-oculto"></p>
+    </div>
+  
+    <!-- Segundo bloque -->
+    <div class="bloque-mensaje">
+      <button id="btnMensaje2" 
+              onclick="toggleMensaje('mensaje2','btnMensaje2','hola como estan.','Mostrar otro mensaje','Ocultar mensaje')">
+        Mostrar otro mensaje
+      </button>
+      <p id="mensaje2" class="mensaje-oculto"></p>
+    </div>
+  
+  </div>
+  
+
         <img src="img/odontólogo (3).png" alt="sobre mí">
+    </section>
+
+    <section>
+        <h2>Preguntas</h2>
+        <div id="preguntasRetaibles"></div>
+
+        <div class="bloque-mensaje">
+            <button id="btnMensaje3" onclick="toggleMensaje('mensaje3','btnMensaje3','Tu perro te ama.','Mostrar mensaje','Ocultar mensaje')">
+                ¿Sabías que...?
+            </button>
+            <p id="mensaje3" class="mensaje-oculto"></p>
+        </div>
     </section>
 
     <section id="PEC">
         <h2>Sobre el PEC</h2>
-        <img src="img/huellas (2).png" alt="imagen que muestra sobre el proyecto huellas" width="1200" height="600">
+        <img src="img/huellas (2).png" alt="imagen que muestra sobre el proyecto huellas" width="1100" height="600">
         <p>Proyecto Huellas: cuidado animal y salud comunitaria</p>
     </section>
+
+    <section>
+        <h1>Sección interactiva</h1>
+        <form id="contactoForm" onsubmit="return validarFormulario()">
+          <label for="nombre">Nombre completo:</label>
+          <input type="text" id="nombre" placeholder="Escribe tu nombre">
+      
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" placeholder="ejemplo@gmail.com">
+      
+          <label for="telefono">Teléfono:</label>
+          <input type="text" id="telefono" placeholder="10 dígitos">
+      
+          <label for="mensajeContacto">Mensaje:</label>
+          <textarea id="mensajeContacto" placeholder="Escribe tu mensaje"></textarea>
+      
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+      
+      <style>
+        /* Estilo para campos con error */
+        .error {
+          border: 2px solid red;
+          background-color: #ffe6e6;
+        }
+      </style>
+      
+      <script>
+        function validarFormulario() {
+          let valido = true;
+      
+          // Lista de campos a validar
+          const campos = ["nombre", "email", "telefono", "mensajeContacto"];
+      
+          campos.forEach(id => {
+            const campo = document.getElementById(id);
+            if (campo.value.trim() === "") {
+              campo.classList.add("error"); // marca en rojo
+              valido = false;
+            } else {
+              campo.classList.remove("error"); // limpia si está correcto
+            }
+          });
+      
+          // Si hay algún campo vacío, no se envía
+          return valido;
+        }
+      </script>
 
     <footer>
         <p>2026 - David</p>
     </footer>
-</body>
 
+    <a href="https://www.facebook.com/tuusuario" target="_blank" class="btn-flotante facebook">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://wa.me/521XXXXXXXXXX" target="_blank" class="btn-flotante whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="#top" class="arrow-up">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        function toggleMensaje(idMensaje, idBoton, textoMostrar, textoBotonMostrar, textoBotonOcultar) {
+            const mensaje = document.getElementById(idMensaje);
+            const boton = document.getElementById(idBoton);
+
+            if (mensaje.style.display === "none" || mensaje.style.display === "") {
+                mensaje.innerText = textoMostrar;
+                mensaje.style.display = "block";
+                boton.innerText = textoBotonOcultar;
+            } else {
+                mensaje.style.display = "none";
+                boton.innerText = textoBotonMostrar;
+            }
+        }
+
+        function toggleDarkMode() {
+            const body = document.body;
+            const boton = document.getElementById("btnDarkMode");
+
+            body.classList.toggle("dark-mode");
+
+            if (body.classList.contains("dark-mode")) {
+                boton.innerText = "Modo claro";
+            } else {
+                boton.innerText = "Modo oscuro";
+            }
+        }
+    </script>
+</body>
 </html>

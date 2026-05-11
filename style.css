@@ -1,16 +1,16 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(0, 255, 162);
+    background-color: rgb(115, 255, 84);
     margin: 0;
     line-height: 1.6;
 }
 
 header {
-    background-color: rgb(255, 0, 140);
-    color: beige;
+    background-color: rgb(246, 6, 138);
+    color: white; /* mejor contraste */
     text-align: center;
+    padding: 20px;
 }
-
 
 nav {
     background-color: #34495e;
@@ -20,7 +20,7 @@ nav {
 
 /* Enlaces del menú */
 nav a {
-    color: white;
+    color: rgb(249, 249, 249);
     text-decoration: none;
     margin: 0 15px;
     font-weight: bold;
@@ -30,6 +30,7 @@ nav a {
 nav a:hover {
     color: #ffcc00;
 }
+
 section {
     background-color: coral;
     margin: 20px auto;
@@ -44,11 +45,191 @@ img {
     margin-top: 20px;
 }
 
-
 footer {
-    background-color: aqua;
+    background-color: #222; /* más oscuro para contraste */
     color: white;
     text-align: center;
     padding: 10px;
     margin-top: 20px;
 }
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ffcc00;
+    color: #222; /* texto oscuro para contraste */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.3s;
+}
+
+button:hover {
+    background-color: #e6b800; /* tono más oscuro al pasar el mouse */
+}
+
+button:active {
+    transform: scale(0.95);
+    background-color: chartreuse;
+}
+
+      /* Botón flotante estilo bolita */
+      .btn-flotante {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        transition: transform 0.2s;
+        text-decoration: none;
+    }
+
+    /* Estilo para el modo oscuro */
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-mode header,
+.dark-mode nav,
+.dark-mode section,
+.dark-mode footer {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+/* Estilo del interruptor */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input {
+    opacity: 0; /* ocultar el checkbox */
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px; width: 26px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3; /* color cuando está activo */
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  /* Botón de flecha para volver arriba */
+.arrow-up {
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* esquina inferior izquierda */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #333;
+    color: white;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    text-decoration: none;
+}
+
+.arrow-up:hover {
+    transform: scale(1.1);
+    background-color: #555;
+}
+
+/* FORMULARIO AJUSTADO AL TAMAÑO DE LA IMAGEN (1100px) */
+#contactoForm {
+    width: 1100px;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Campos del formulario */
+#contactoForm input,
+#contactoForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    font-size: 16px;
+}
+
+/* Campo con error */
+.campo-error {
+    border: 2px solid red !important;
+    color: red !important;
+}
+s
+
+/* Botón */
+#contactoForm button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#contactoForm button:hover {
+    background: #0f5ec4;
+}
+
+.contenedor-botones {
+    display: flex;          /* coloca los bloques en fila */
+    gap: 20px;              /* espacio entre los bloques */
+  }
+  
+  .bloque-mensaje {
+    display: flex;
+    flex-direction: column; /* botón arriba, mensaje debajo */
+    align-items: flex-start;
+  }
+  
+  .mensaje-oculto {
+    display: none;          /* oculto al inicio */
+    margin-top: 5px;        /* separación del botón */
+    color: blue;
+    font-weight: bold;
+  }
